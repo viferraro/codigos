@@ -1,0 +1,12 @@
+
+ 'Número de parágrafos com classe CSS: ' 5<p class="fp-text-one">O MEC definiu 5 tipos de cursos de graduação na área de computação. Qual escolher?</p>
+<p class="fp-text-two">Quer descobrir o horário daquela optativa que sempre quis fazer? Se perdeu e não lembra a sala da próxima aula? Temos um quadro de horários atualizado para você!</p>
+<p class="fp-text-three">O BSI, assim como a UNIRIO, está cheio de atividades e eventos que afetam nosso dia-a-dia, seja um feriado ou uma semana acadêmica. Fique por dentro e se planeje!</p>
+<p class="czr-copyright">
+<span class="czr-copyright-text">© 2024 </span><a class="czr-copyright-link" href="https://bsi.uniriotec.br" title="BSI - UNIRIO">BSI - UNIRIO</a><span class="czr-rights-text"> – All rights reserved</span>
+</p>
+<p class="czr-credits">
+<span class="czr-designer">
+<span class="czr-wp-powered"><span class="czr-wp-powered-text">Proporcionado por </span><a class="czr-wp-powered-link" href="https://wordpress.org/" rel="noopener noreferrer" target="_blank" title="Desenvolvido com WordPress">WP</a></span><span class="czr-designer-text"> – Designed with the <a class="czr-designer-link" href="https://presscustomizr.com/customizr" title="Customizr theme">Customizr theme</a></span>
+</span>
+</p>

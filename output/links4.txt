@@ -1,0 +1,5 @@
+Tag completa do primeiro parágrafo:
+<p class="fp-text-one">O MEC definiu 5 tipos de cursos de graduação na área de computação. Qual escolher?</p>
+Texto do primeiro parágrafo:
+O MEC definiu 5 tipos de cursos de graduação na área de computação. Qual escolher?
+Quantidade de parágrafos dentro de uma div: 6
