@@ -29,3 +29,5 @@ with open(output_file, "w") as f:
         print(link.get('href'))  # Modificado para imprimir apenas o atributo 'href' do link
         # Escreva o link no arquivo de saída
         f.write(f"{link.get('href')}\n")  # Modificado para escrever apenas o atributo 'href' do link
+
+print(f"Saídas salvas em {output_file}")

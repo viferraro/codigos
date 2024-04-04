@@ -24,4 +24,6 @@ with open(output_file, "a") as f:
         print(paragrafo)
         f.write(f"{paragrafo}\n")
 
+print(f"Saídas salvas em {output_file}")
+
     
