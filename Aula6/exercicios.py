@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 # URL da página do BSI
 url = 'https://bsi.uniriotec.br/'
@@ -11,7 +11,7 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 # 1) Número de parágrafos com a palavra "BSI"
-paragrafos_bsi = soup.find_all('p', string=lambda text: 'BSI' in text)
+paragrafos_bsi = soup.find_all('p', string=lambda text: text and 'BSI' in text)
 num_paragrafos_bsi = len(paragrafos_bsi)
 print(f"1) Número de parágrafos com a palavra 'BSI': {num_paragrafos_bsi}")
 
@@ -34,7 +34,8 @@ num_imagens_com_alt = len(soup.find_all('img', alt=True))
 print(f"6) Quantidade de imagens com atributo alt: {num_imagens_com_alt}")
 
 # 7) Número de comentários na página
-num_comentarios = len(soup.find_all(string=lambda text: isinstance(text, Comment)))
+num_comentarios = len(soup.find_all(
+    string=lambda text: isinstance(text, Comment)))
 print(f"7) Número de comentários na página: {num_comentarios}")
 
 # 8) Quantidade de <span> filhos de <div>
@@ -46,16 +47,19 @@ num_ancoras = len(soup.find_all('a'))
 print(f"9) Quantidade de âncoras na página: {num_ancoras}")
 
 # 10) Quantidade total de links na página
-num_links = len(soup.find_all(['a', 'link'])) 
+num_links = len(soup.find_all(['a', 'link']))
 print(f"10) Quantidade total de links na página: {num_links}")
 
 # 11) Quantidade de links internos (que começam com "/")
-num_links_internos = len(soup.find_all('a', href=True, href=lambda href: href.startswith('/')))
-print(f"11) Quantidade de links internos: {num_links_internos}")
+num_links_internos = len(soup.find_all(
+    'a', href=lambda href: href and href.startswith('/')))
+print(f"Quantidade de links internos: {num_links_internos}")
+
 
 # 12) Quantidade de elementos com classe "menu-item"
 num_menu_items = len(soup.find_all(class_='menu-item'))
-print(f"12) Quantidade de elementos com a classe 'menu-item': {num_menu_items}")
+print(
+    f"12) Quantidade de elementos com a classe 'menu-item': {num_menu_items}")
 
 # 13) Quantidade de cabeçalhos (h1 a h6) na página
 num_cabecalhos = len(soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']))
@@ -63,16 +67,19 @@ print(f"13) Quantidade de cabeçalhos na página: {num_cabecalhos}")
 
 # 14) Quantidade de tags que não são parágrafos
 num_tags_nao_paragrafos = len(soup.find_all(lambda tag: tag.name != 'p'))
-print(f"14) Quantidade de tags que não são parágrafos: {num_tags_nao_paragrafos}")
+print(
+    f"14) Quantidade de tags que não são parágrafos: {num_tags_nao_paragrafos}")
 
 # 15) Quantas vezes a palavra "BSI" aparece na página
 ocorrencias_bsi = soup.body.text.count('BSI')
 print(f"15) Quantidade de vezes que 'BSI' aparece na página: {ocorrencias_bsi}")
 
 # 16) Quantidade de parágrafos que começam com a letra "O"
-paragrafos_com_o = soup.find_all('p', string=lambda text: text.strip().lower().startswith('o'))
+paragrafos_com_o = soup.find_all('p', string=lambda text: text and text.strip().lower().startswith('o'))
+
 num_paragrafos_com_o = len(paragrafos_com_o)
-print(f"16) Quantidade de parágrafos que começam com 'O': {num_paragrafos_com_o}")
+print(
+    f"16) Quantidade de parágrafos que começam com 'O': {num_paragrafos_com_o}")
 '''
 17) Cite e explique três atributos ou métodos do objeto Tag.
 name: O atributo name de um objeto Tag retorna o nome da tag HTML. Por exemplo, se tivermos uma tag <p>, o atributo name retornará a string 'p'.
@@ -133,7 +140,7 @@ li_tags = ul_tag.find_all('li')
 irmaos_do_primeiro_li = li_tags[0].find_next_siblings('li')
 for irmao in irmaos_do_primeiro_li:
     print(irmao.text)
-#Isso imprimirá os textos dos elementos irmãos subsequentes do primeiro <li> (ou seja, “Item 2” e “Item 3”).
+# Isso imprimirá os textos dos elementos irmãos subsequentes do primeiro <li> (ou seja, “Item 2” e “Item 3”).
 
 '''
 28) Para que serve o “html.parser”? O "html.parser" é um analisador HTML embutido no BeautifulSoup. Ele é usado para analisar documentos HTML e criar uma árvore de análise. É uma opção padrão quando você cria um objeto BeautifulSoup. No entanto, existem outras alternativas de analisadores, como lxml e html5lib.
