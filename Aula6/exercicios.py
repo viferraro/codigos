@@ -10,76 +10,76 @@ response = requests.get(url)
 # Criamos um objeto BeautifulSoup para analisar o conteúdo HTML
 soup = BeautifulSoup(response.content, 'html.parser')
 
-# 1) Número de parágrafos com a palavra "BSI"
-paragrafos_bsi = soup.find_all('p', string=lambda text: text and 'BSI' in text)
-num_paragrafos_bsi = len(paragrafos_bsi)
-print(f"1) Número de parágrafos com a palavra 'BSI': {num_paragrafos_bsi}")
+# # 1) Número de parágrafos com a palavra "BSI"
+# paragrafos_bsi = soup.find_all('p', string=lambda text: text and 'BSI' in text)
+# num_paragrafos_bsi = len(paragrafos_bsi)
+# print(f"1) Número de parágrafos com a palavra 'BSI': {num_paragrafos_bsi}")
 
-# 2) Número de parágrafos sem a palavra "BSI"
-num_paragrafos_sem_bsi = len(soup.find_all('p')) - num_paragrafos_bsi
-print(f"2) Número de parágrafos sem a palavra 'BSI': {num_paragrafos_sem_bsi}")
-# 3) Maior parágrafo da página
-maior_paragrafo = max(paragrafos_bsi, key=lambda p: len(p.text)).text
-print(f"3) Maior parágrafo da página: {maior_paragrafo}")
-# 4) Menor parágrafo (não vazio) da página
-paragrafos_nao_vazios = [p.text for p in soup.find_all('p') if p.text.strip()]
-menor_paragrafo = min(paragrafos_nao_vazios, key=len)
-print(f"4) Menor parágrafo (não vazio) da página: {menor_paragrafo}")
-# 5) Quantidade de imagens na página
-num_imagens = len(soup.find_all('img'))
-print(f"5) Quantidade de imagens na página: {num_imagens}")
+# # 2) Número de parágrafos sem a palavra "BSI"
+# num_paragrafos_sem_bsi = len(soup.find_all('p')) - num_paragrafos_bsi
+# print(f"2) Número de parágrafos sem a palavra 'BSI': {num_paragrafos_sem_bsi}")
+# # 3) Maior parágrafo da página
+# maior_paragrafo = max(paragrafos_bsi, key=lambda p: len(p.text)).text
+# print(f"3) Maior parágrafo da página: {maior_paragrafo}")
+# # 4) Menor parágrafo (não vazio) da página
+# paragrafos_nao_vazios = [p.text for p in soup.find_all('p') if p.text.strip()]
+# menor_paragrafo = min(paragrafos_nao_vazios, key=len)
+# print(f"4) Menor parágrafo (não vazio) da página: {menor_paragrafo}")
+# # 5) Quantidade de imagens na página
+# num_imagens = len(soup.find_all('img'))
+# print(f"5) Quantidade de imagens na página: {num_imagens}")
 
-# 6) Quantidade de imagens com atributo alt
-num_imagens_com_alt = len(soup.find_all('img', alt=True))
-print(f"6) Quantidade de imagens com atributo alt: {num_imagens_com_alt}")
+# # 6) Quantidade de imagens com atributo alt
+# num_imagens_com_alt = len(soup.find_all('img', alt=True))
+# print(f"6) Quantidade de imagens com atributo alt: {num_imagens_com_alt}")
 
-# 7) Número de comentários na página
-num_comentarios = len(soup.find_all(
-    string=lambda text: isinstance(text, Comment)))
-print(f"7) Número de comentários na página: {num_comentarios}")
+# # 7) Número de comentários na página
+# num_comentarios = len(soup.find_all(
+#     string=lambda text: isinstance(text, Comment)))
+# print(f"7) Número de comentários na página: {num_comentarios}")
 
-# 8) Quantidade de <span> filhos de <div>
-num_span_filhos_div = len(soup.select('div span'))
-print(f"8) Quantidade de <span> filhos de <div>: {num_span_filhos_div}")
+# # 8) Quantidade de <span> filhos de <div>
+# num_span_filhos_div = len(soup.select('div span'))
+# print(f"8) Quantidade de <span> filhos de <div>: {num_span_filhos_div}")
 
-# 9) Quantidade de âncoras (links) na página
-num_ancoras = len(soup.find_all('a'))
-print(f"9) Quantidade de âncoras na página: {num_ancoras}")
+# # 9) Quantidade de âncoras (links) na página
+# num_ancoras = len(soup.find_all('a'))
+# print(f"9) Quantidade de âncoras na página: {num_ancoras}")
 
-# 10) Quantidade total de links na página
-num_links = len(soup.find_all(['a', 'link']))
-print(f"10) Quantidade total de links na página: {num_links}")
+# # 10) Quantidade total de links na página
+# num_links = len(soup.find_all(['a', 'link']))
+# print(f"10) Quantidade total de links na página: {num_links}")
 
-# 11) Quantidade de links internos (que começam com "/")
-num_links_internos = len(soup.find_all(
-    'a', href=lambda href: href and href.startswith('/')))
-print(f"Quantidade de links internos: {num_links_internos}")
+# # 11) Quantidade de links internos (que começam com "/")
+# num_links_internos = len(soup.find_all(
+#     'a', href=lambda href: href and href.startswith('/')))
+# print(f"Quantidade de links internos: {num_links_internos}")
 
 
-# 12) Quantidade de elementos com classe "menu-item"
-num_menu_items = len(soup.find_all(class_='menu-item'))
-print(
-    f"12) Quantidade de elementos com a classe 'menu-item': {num_menu_items}")
+# # 12) Quantidade de elementos com classe "menu-item"
+# num_menu_items = len(soup.find_all(class_='menu-item'))
+# print(
+#     f"12) Quantidade de elementos com a classe 'menu-item': {num_menu_items}")
 
-# 13) Quantidade de cabeçalhos (h1 a h6) na página
-num_cabecalhos = len(soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']))
-print(f"13) Quantidade de cabeçalhos na página: {num_cabecalhos}")
+# # 13) Quantidade de cabeçalhos (h1 a h6) na página
+# num_cabecalhos = len(soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']))
+# print(f"13) Quantidade de cabeçalhos na página: {num_cabecalhos}")
 
-# 14) Quantidade de tags que não são parágrafos
-num_tags_nao_paragrafos = len(soup.find_all(lambda tag: tag.name != 'p'))
-print(
-    f"14) Quantidade de tags que não são parágrafos: {num_tags_nao_paragrafos}")
+# # 14) Quantidade de tags que não são parágrafos
+# num_tags_nao_paragrafos = len(soup.find_all(lambda tag: tag.name != 'p'))
+# print(
+#     f"14) Quantidade de tags que não são parágrafos: {num_tags_nao_paragrafos}")
 
-# 15) Quantas vezes a palavra "BSI" aparece na página
-ocorrencias_bsi = soup.body.text.count('BSI')
-print(f"15) Quantidade de vezes que 'BSI' aparece na página: {ocorrencias_bsi}")
+# # 15) Quantas vezes a palavra "BSI" aparece na página
+# ocorrencias_bsi = soup.body.text.count('BSI')
+# print(f"15) Quantidade de vezes que 'BSI' aparece na página: {ocorrencias_bsi}")
 
-# 16) Quantidade de parágrafos que começam com a letra "O"
-paragrafos_com_o = soup.find_all('p', string=lambda text: text and text.strip().lower().startswith('o'))
+# # 16) Quantidade de parágrafos que começam com a letra "O"
+# paragrafos_com_o = soup.find_all('p', string=lambda text: text and text.strip().lower().startswith('o'))
 
-num_paragrafos_com_o = len(paragrafos_com_o)
-print(
-    f"16) Quantidade de parágrafos que começam com 'O': {num_paragrafos_com_o}")
+# num_paragrafos_com_o = len(paragrafos_com_o)
+# print(
+#     f"16) Quantidade de parágrafos que começam com 'O': {num_paragrafos_com_o}")
 '''
 17) Cite e explique três atributos ou métodos do objeto Tag.
 name: O atributo name de um objeto Tag retorna o nome da tag HTML. Por exemplo, se tivermos uma tag <p>, o atributo name retornará a string 'p'.
