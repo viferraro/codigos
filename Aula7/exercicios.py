@@ -121,9 +121,10 @@ print("Quantidade =", cont)
 texto = soup.get_text()
 padrao = r'\b[A-ZÀ-Ü][A-ZÀ-Ü]+\b'
 palavras = re.findall(padrao, texto)
-for palavra in palavras:
-    print(palavra)
-print("Quantidade = ", len(palavras))
+siglas = set(palavras)
+for sigla in siglas:
+    print(sigla)
+print("Quantidade = ", len(siglas))
 # Usa expressão regular para encontrar siglas (letras maiúsculas)
 acronyms = re.findall(r'\b[A-Z]{2,}\b', all_text)
 
