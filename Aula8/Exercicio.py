@@ -18,7 +18,15 @@ Faça um programa com regex que seleciona
 2) os itens com dígitos 2 e 5 (em qualquer posição).'''
 
 msg='1227 122228 104 1222222226 1232323 1523 121212512 250'
-padrao = '12*7.*'
-print('Padrão: "12*7.*" onde 1 ponto = 1 caractere')
+#padrao = '12*7'
+#print('1- Padrão: "12*7"')
+padrao = r'\b\d*7\d*\b'
+print('1- Padrão: "d*7"') 
+teste = re.findall(padrao, msg)
+print(teste)
+
+
+padrao = r'\b\d*2\d*5\d*\b | \b\d*5\d*2\d*\b'
+print('2- Padrão: "d*2d*5" ou "d*5d*2"')
 teste = re.findall(padrao, msg)
 print(teste)
